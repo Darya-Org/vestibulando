@@ -1,5 +1,9 @@
 name: publish PDFs
 on: push
+
+permissions:
+  contents: write
+
 jobs:
   render-paper:
     runs-on: ubuntu-latest

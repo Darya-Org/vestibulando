@@ -9,8 +9,6 @@
 
 = Álgebra
 
-#pagebreak();
-
 == Logaritmo
 \
 Função inversa à função exponencial, imagem e domínio trocados
@@ -81,7 +79,7 @@ b) log_(b)^t(x) = y$
   let point = (0, 0)
 
   content(point, anchor: "west", [a)$
-    cancel(log_5)^(3x-5) = cancel(log_5)^7 
+    cancel(log_5)^(3x-5) = cancel(log_5)^7
     &=> 3x-5 = 7 \
     &= 3x = 12 \
     &= underline(x = 4)\
@@ -315,7 +313,7 @@ O escalonamento de um sistema linear é um método para resolver sistemas que co
       -5y = -13 \
       y = 2,6
     $])
-    
+
     content((point.at(0) + 12, point.at(1) - 3.4), anchor: "west", [$
       & x + 4 dot 2,6 + 2 dot 3 = 24 \
       & x + 10,4 + 6 = 24 \
@@ -340,11 +338,7 @@ O teorema de Cramer é um método de resolver sistemas através de determinantes
 
 === Discussão de Sistemas Lineares
 
-#pagebreak()
-
 = Análise Combinatória e Estatística
-
-#pagebreak()
 
 == Diagrama de Arvore
 
@@ -365,7 +359,7 @@ O teorema de Cramer é um método de resolver sistemas através de determinantes
       C3: (point.at(0) + 6, point.at(1) - 1),
       C4: (point.at(0) + 6, point.at(1) - 3),
     )
-    
+
     ctz-draw-path("A1--B1--C1", stroke: black, points: false, labels: false)
     ctz-draw-path("B1--C2", stroke: black, points: false, labels: false)
     ctz-draw-path("A1--B2--C3", stroke: black, points: false, labels: false)
@@ -387,11 +381,7 @@ O teorema de Cramer é um método de resolver sistemas através de determinantes
 \
 $5! = 120$
 
-#pagebreak()
-
 = Geometria Plana
-
-#pagebreak()
 
 == Triângulos
 \
@@ -499,7 +489,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-  
+
   content((point.at(0) -2, point.at(1) + 8), anchor: "west", [
     Formula do Triângulo Equilátero\ \
     $A_\u{25B3} = (l^2 sqrt(3)) / 4$\ \
@@ -540,7 +530,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-  
+
   content((point.at(0) - 2, point.at(1) + 8), anchor: "west", [
     Formula (genérica) do Triângulo\ \
     $A_\u{25B3} = (b dot h) / 2$\ \
@@ -583,7 +573,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-  
+
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Área do Circulo\ \
     $A_\u{25CB} = pi dot r^2$\ \
@@ -621,7 +611,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-  
+
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Perímetro do Circulo\ \
     $2P_\u{25CB} = 2 pi dot r$\ \
@@ -1118,11 +1108,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
   })
 ]
 
-#pagebreak()
-
 = Geometria Espacial
-
-#pagebreak()
 
 == Relação de Euler
 \
@@ -1168,7 +1154,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
     )
 
     ctz-draw(
-      points: ("A", "B", "C", "D", "E", "F", "h"), 
+      points: ("A", "B", "C", "D", "E", "F", "h"),
       labels: (
         A: "below",
         B: "below",

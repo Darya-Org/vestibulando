@@ -5,12 +5,10 @@
   title: [Resumo de Matemática - E.M.],
 )
 
-#pagebreak()
-
 = Álgebra
 
 == Logaritmo
-\
+
 Função inversa à função exponencial, imagem e domínio trocados
 
 #align(center)[
@@ -52,7 +50,7 @@ Função inversa à função exponencial, imagem e domínio trocados
 ]
 
 === Propriedades do Logaritmo
-\
+
 #grid(
   columns: 3,
   gutter: 2em,
@@ -64,13 +62,14 @@ Função inversa à função exponencial, imagem e domínio trocados
 )
 
 === Casos
-\
+
 $
 a) log_(b)^f(x) = log_(b)^g(x) \
-b) log_(b)^t(x) = y$
+b) log_(b)^t(x) = y
+$
 
 === Exemplos
-\
+
 #ctz-canvas({
   import cetz.draw: *
 
@@ -79,7 +78,7 @@ b) log_(b)^t(x) = y$
   let point = (0, 0)
 
   content(point, anchor: "west", [a)$
-    cancel(log_5)^(3x-5) = cancel(log_5)^7
+    cancel(log_5)^(3x-5) = cancel(log_5)^7 
     &=> 3x-5 = 7 \
     &= 3x = 12 \
     &= underline(x = 4)\
@@ -198,7 +197,7 @@ $
 === Soma
 
 === Multiplicação
-\
+
 $
 M_(2 x 3) dot M_(3 x 2) = M_(2 x 2)
 $
@@ -236,18 +235,15 @@ $\
 === Determinantes
 
 === Teorema de Laplace
-\
+
 O determinante será a soma dos elementos de uma linha ou coluna (escolhida) pelo seu cofator.
 
 === Regra de Chió
-\
 
 == Sistemas Lineares
-\
 Um sistema linear é composto por equações lineares e o conjunto solução é um par ordenado (x, y), uma terna ordenada (x, y, z) e assim por diante. Uma equação é linear quando possuí duas ou mais incógnitas.
 
 === Adição
-\
 
 #align(center)[
   #ctz-canvas(length: 0.7cm, clip-canvas: (-1, -2, 8, 2), {
@@ -276,7 +272,7 @@ Um sistema linear é composto por equações lineares e o conjunto solução é 
 ]
 
 === Escalonamento
-\
+
 O escalonamento de um sistema linear é um método para resolver sistemas que consiste em eliminar incógnitas para formar uma "escada". Esse método é nais indicado para resolver sistemas de ordem igual ou maior que 3.
 
 #align(center)[
@@ -313,7 +309,7 @@ O escalonamento de um sistema linear é um método para resolver sistemas que co
       -5y = -13 \
       y = 2,6
     $])
-
+    
     content((point.at(0) + 12, point.at(1) - 3.4), anchor: "west", [$
       & x + 4 dot 2,6 + 2 dot 3 = 24 \
       & x + 10,4 + 6 = 24 \
@@ -333,7 +329,7 @@ O escalonamento de um sistema linear é um método para resolver sistemas que co
 ]
 
 === Cramer
-\
+
 O teorema de Cramer é um método de resolver sistemas através de determinantes. Esse método pode ser usado em sistemas de qualquer ordem (2x2, 3x3, 4x4 etc).
 
 === Discussão de Sistemas Lineares
@@ -342,44 +338,87 @@ O teorema de Cramer é um método de resolver sistemas através de determinantes
 
 == Diagrama de Arvore
 
+Imagine que *você* quer comprar um carro e está em duvida entre duas marcas diferentes, sendo que cada uma delas oferece 3 cores diferentes. Quantas combinações de carros diferentes temos para escolher entre?
+
 #align(left)[
-  #ctz-canvas(length: 0.7cm, clip-canvas: (-8, -5, 8, 5), {
+  #ctz-canvas(length: 0.7cm, clip-canvas: (-2, -8, 8, 2), {
+    import "@preview/cetz:0.5.2": tree
     import cetz.draw: *
 
     ctz-init()
 
-    let point = (0, 0)
+    let encircle(i) = {
+      std.box(baseline: 2pt, std.circle(stroke: .5pt, radius: .5em, std.move(dx: -.35em, dy: -.45em, [#i])))
+    }
 
-    ctz-def-points(
-      A1: (point.at(0), point.at(1)),
-      B1: (point.at(0) + 3, point.at(1) + 2),
-      B2: (point.at(0) + 3, point.at(1) - 2),
-      C1: (point.at(0) + 6, point.at(1) + 3),
-      C2: (point.at(0) + 6, point.at(1) + 1),
-      C3: (point.at(0) + 6, point.at(1) - 1),
-      C4: (point.at(0) + 6, point.at(1) - 3),
+    set-style(content: (padding: 0.5em))
+    tree.tree(
+      ([Carro], (
+        [BYD],
+        ("Azul", "C-B-A"),
+        ("Vermelho", "C-B-V"),
+        ("Roxo", "C-B-R"),
+      ), (
+        [FIAT],
+        ("Azul", "C-F-A"),
+        ("Vermelho", "C-F-V"),
+        ("Roxo", "C-F-R")
+      ))
     )
-
-    ctz-draw-path("A1--B1--C1", stroke: black, points: false, labels: false)
-    ctz-draw-path("B1--C2", stroke: black, points: false, labels: false)
-    ctz-draw-path("A1--B2--C3", stroke: black, points: false, labels: false)
-    ctz-draw-path("B2--C4", stroke: black, points: false, labels: false)
-
-    content("A1", [$A_1$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-    content("B1", [$B_1$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-    content("B2", [$B_2$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-    content("C1", [$C_1$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-    content("C2", [$C_2$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-    content("C3", [$C_1$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-    content("C4", [$C_2$], frame: "rect", fill: white, padding: 0, stroke: (paint: white))
-
-    content((-0.5, -5), anchor: "west", [4 combinações possíveis])
   }
 )]
 
-== Fatorial
-\
-$5! = 120$
+== Permutação
+
+Permutar é trocar todos os elementos de posição. Para fazer isso, geralmente, usamos o fatorial.
+
+=== Fatorial
+
+Simplificando, fatoriais são: $n! = n dot (n - 1) dot ... dot 3 dot 2 dot 1$
+
+#align(center)[
+  #cetz.canvas(length: 1cm, {
+    import cetz.draw: *
+    import "@preview/cetz-plot:0.1.3": plot, chart
+
+    set-style(content: (padding: 0.2em))
+
+    plot.plot(
+      size: (10, 6),
+      x-tick-step: 1,
+      y-tick-step: 1000000,
+      x-min: 0,
+      x-max: 10,
+      y-min: 0,
+      y-max: 4000000,
+      axis-style: "school-book",
+      x-label: $x$,
+      y-label: $y$,
+      {
+        let data = range(1, 11).map(x => (x, calc.fact(x)))
+        plot.add(data, label: [Fatorial], mark: "o")
+
+        plot.add-hline(
+          3628800,
+          style: (stroke: (dash: "dashed", paint: red)),
+        )
+      }
+    )
+  })
+]
+
+lista de fatoriais
+$
+  &2! = 2 dot 1 = 2\
+  &3! = 3 dot 2! = 6\
+  &4! = 4 dot 3! = 24\
+  &5! = 5 dot 4! = 120\
+  &6! = 6 dot 5! = 720\
+  &7! = 7 dot 6! = 5040\
+  &8! = 8 dot 5! = 40320\
+  &9! = 9 dot 8! = 362880\
+  &10! = 10 dot 9! = 3628800\
+$
 
 = Geometria Plana
 
@@ -489,7 +528,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-
+  
   content((point.at(0) -2, point.at(1) + 8), anchor: "west", [
     Formula do Triângulo Equilátero\ \
     $A_\u{25B3} = (l^2 sqrt(3)) / 4$\ \
@@ -530,7 +569,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-
+  
   content((point.at(0) - 2, point.at(1) + 8), anchor: "west", [
     Formula (genérica) do Triângulo\ \
     $A_\u{25B3} = (b dot h) / 2$\ \
@@ -573,7 +612,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-
+  
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Área do Circulo\ \
     $A_\u{25CB} = pi dot r^2$\ \
@@ -611,7 +650,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-
+  
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Perímetro do Circulo\ \
     $2P_\u{25CB} = 2 pi dot r$\ \
@@ -1154,7 +1193,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
     )
 
     ctz-draw(
-      points: ("A", "B", "C", "D", "E", "F", "h"),
+      points: ("A", "B", "C", "D", "E", "F", "h"), 
       labels: (
         A: "below",
         B: "below",

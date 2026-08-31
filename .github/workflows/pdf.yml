@@ -1,30 +1,36 @@
 name: publish PDFs
 on: push
-
 permissions:
   contents: write
-
 jobs:
   render-paper:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: typst-community/setup-typst@v5
-
       - name: Install IBM Plex Math font
         run: |
           mkdir -p fonts
           curl -L -o plex-math.zip "https://github.com/IBM/plex/releases/download/@ibm/plex-math@1.1.0/ibm-plex-math.zip"
           unzip -j plex-math.zip "*.otf" -d fonts
-
-      - name: build PDF
-        run: typst compile --font-path fonts src/matematica.typ matematica.pdf
-
+      - name: build PDFs
+        run: |
+          mkdir -p out
+          for f in src/*.typ; do
+            base=$(basename "$f")
+            if [ "$base" = "model.typ" ]; then
+              echo "Skipping dependency $f"
+              continue
+            fi
+            name="${base%.typ}"
+            echo "Compilando $f -> out/$name.pdf"
+            typst compile --font-path fonts "$f" "out/$name.pdf"
+          done
       - name: Create Github Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: auto-${{ github.run_number }}
           name: "Auto Release #${{ github.run_number }}"
-          files: matematica.pdf
+          files: out/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

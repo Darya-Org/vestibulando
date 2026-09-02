@@ -1,5 +1,6 @@
 #import "model.typ": prova_model
 #import "@preview/ctz-euclide:0.1.5": *
+#import "@preview/genotypst:0.11.0": parse-newick, render-rectangular-tree
 
 #show: prova_model.with(
   title: [Resumo de Biologia - E.M.],
@@ -102,8 +103,6 @@ Biogênese:
   })
 ]
 
-#pagebreak()
-
 = Vida Celular
 
 == Seres Procariontes
@@ -123,8 +122,6 @@ Um vírus, ao infectar uma célula
 ==== Arqueas _(extremófilos)_
 
 Encontradas em locais de alta temperatura, salinidade elevada e em ausência de gás carbônico ($C O_2$). Muito mais simples do ponto de vista celular, mas muito mais complexas do ponto de vista metabólico.
-
-#pagebreak()
 
 == Seres Eucarióticos
 
@@ -234,77 +231,111 @@ Crescimento descontrolado pode ser provocado pelo aumento da temperatura oceâni
 - Eutrofização (algas verdes)
 - Maré-vermelha (algas vermelhas)
 
-#pagebreak()
+== Reino Animália: Metazoa
 
-== Reino Animalia: Metazoa
-\
-#align(center)[
+/*#align(center)[
   #ctz-canvas(length: 0.7cm, clip-canvas: (-1, -2, 8, 2), {
+    import "@preview/cetz:0.5.2": tree
     import cetz.draw: *
 
     ctz-init()
 
     set-style(content: (frame: "rect", fill: white, padding: 4pt))
-  
+
     line(name: "1", (0, 0), (3, 0))
     content("1.start", [Reino\ Animal])
-    content("1.mid", [1])
-  
+    content("1.mid", anchor: "west", [1])
+
     line((3, 3), (3, -3))
     line(name: "6", (3, 3), (15, 3))
     content("6.mid", [6])
     content("6.end", [Poríferos])
-  
+
     line(name: "2", (3, -3), (5, -3))
     line((5, 1), (5, -7))
     content("2.mid", [2])
-  
+
     line(name: "7", (5, 1), (15, 1))
     content("7.mid", [7])
     content("7.end", [Cnidários])
-  
+
     line(name: "3", (5, -7), (7, -7))
     content("3.mid", [3])
     line((7, -4), (7, -12))
-  
+
     line(name: "5", (7, -12), (11, -12))
     content("5.mid", [5])
-  
+
     line((11, -14), (11, -10))
     line(name: "14", (11, -14), (15, -14))
     content("14.end", [Cordados])
     line(name: "13", (11, -10), (15, -10))
     content("13.end", [Equinodérmios])
     //0km content("13.mid", (rel: (-1, 0.3)), [13])
-    content("14.mid", [14])
-  
+    content("14.mid", anchor: "east", [14])
+
     line(name: "4", (7, -4), (9, -4))
     content("4.mid", [4])
     line((9, -7), (9, -1.5))
     line((9, -1.5), (11, -1.5))
-  
+
     line((11, -1), (11, -4))
     line(name: "8", (11, -1), (15, -1))
     line(name: "9", (11, -2.5), (15, -2.5))
     line(name: "10", (11, -4), (15, -4))
     content("8.end", [Platelmintos])
-    content("8.mid", [8])
+    content("8.mid", anchor: "east", [8])
     content("9.end", [Moluscos])
-    content("9.mid", [9])
+    content("9.mid", anchor: "east", [9])
     content("10.end", [Anelídeos])
-    content("10.mid", [10])
-  
+    content("10.mid", anchor: "east", [10])
+
     line(name: "11", (9, -7), (11, -7))
     line((11, -6), (11, -8))
     line(name: "13", (11, -8), (15, -8))
     line(name: "12", (11, -6), (15, -6))
     content("11.mid", [11])
     content("13.end", [Artrópodes])
-    content("13.mid", [13])
+    content("13.mid", anchor: "east", [13])
     content("12.end", [Nematódeos])
-    content("12.mid", [12])
+    content("12.mid", anchor: "east", [12])
   })
-]
+]*/
+
+#let animalia = parse-newick(
+  "
+    (
+      (
+        (
+          (
+            Cordados:0.15,
+            Equinodermios:0.15,
+          )Deuterostomados:0.12,
+          (
+            (
+              Artropodes:0.05,
+              Nematódeos:0.05,
+            )Ecdizoários:0.1,
+            (
+              Moluscos:0.05,
+              Anelideos:0.05,
+              Platelmintos:0.05,
+            ):0.1,
+          )Protostomados:0.12,
+        ):0.05,
+        Cnidários:0.32
+      ):0.05,
+      Poríferos:0.37
+    )Metazoa;
+  "
+)
+
+#align(center)[#render-rectangular-tree(
+  animalia,
+  width: 160mm,
+  height: 100mm,
+  align-tip-labels: true,
+)]
 
 1. Características Exclusivas:
   - Multicelularidade com colágeno na matriz extracelular;
@@ -348,17 +379,39 @@ Crescimento descontrolado pode ser provocado pelo aumento da temperatura oceâni
   - Rádula (ausente nos bivalves): "língua áspera"
 
 10. Metameria
+  - Segmentação do corpo repetitiva
+  - cerdas (ausente nos hirudíneos)
 
 11. Ecdisozoários
+  - Processo de troca do exoesqueleto
 
 12. Pseudoceloma
 
-13.
+13. Exoesqueleto de quitina com apêndices articulados
+  - tagmose do corpo (segmentação)
 
 14. Características Exclusivas:
   - Notocorda
 
-
 = Doenças
 
 = Botânica
+
+#let plantas = parse-newick(
+  "(((Gmnospermas:0.2, Argiospermas:0.2):0.2, Pteridófitas:0.4)Vascoluares:0.3, Briófitas:0.7)Plantas;"
+)
+
+#align(center)[#render-rectangular-tree(
+  plantas,
+  width: 130mm,
+  height: 60mm,
+  align-tip-labels: true,
+)]
+
+== Plantas Vasculares
+
+#align(center)[#ctz-canvas(
+  ctz-init()
+)]
+
+== Pteridófitas

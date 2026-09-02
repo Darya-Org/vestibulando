@@ -1,4 +1,4 @@
-#import "model.typ": prova_model
+-#import "model.typ": prova_model
 #import "@preview/ctz-euclide:0.1.5": *
 
 #show: prova_model.with(
@@ -78,7 +78,7 @@ $
   let point = (0, 0)
 
   content(point, anchor: "west", [a)$
-    cancel(log_5)^(3x-5) = cancel(log_5)^7 
+    cancel(log_5)^(3x-5) = cancel(log_5)^7
     &=> 3x-5 = 7 \
     &= 3x = 12 \
     &= underline(x = 4)\
@@ -309,7 +309,7 @@ O escalonamento de um sistema linear é um método para resolver sistemas que co
       -5y = -13 \
       y = 2,6
     $])
-    
+
     content((point.at(0) + 12, point.at(1) - 3.4), anchor: "west", [$
       & x + 4 dot 2,6 + 2 dot 3 = 24 \
       & x + 10,4 + 6 = 24 \
@@ -347,10 +347,6 @@ Imagine que *você* quer comprar um carro e está em duvida entre duas marcas di
 
     ctz-init()
 
-    let encircle(i) = {
-      std.box(baseline: 2pt, std.circle(stroke: .5pt, radius: .5em, std.move(dx: -.35em, dy: -.45em, [#i])))
-    }
-
     set-style(content: (padding: 0.5em))
     tree.tree(
       ([Carro], (
@@ -365,8 +361,25 @@ Imagine que *você* quer comprar um carro e está em duvida entre duas marcas di
         ("Roxo", "C-F-R")
       ))
     )
+
+    content((14.5, -9), anchor: "east", [$
+        therefore #h(1em) "combinações possiveis" =  6
+    $])
   }
 )]
+
+== Variância
+
+$
+  "Var"(x) &= (sum_(i=1)^n (x_i - #overline[x])^2) / n\
+  & = ((x_i - #overline[x])^2 + ... + (x_1 + #overline[x])^2)/ n
+$
+
+=== Desvio Padrão
+
+$
+  "DP"(x) = sqrt("Var"(x))
+$
 
 == Permutação
 
@@ -407,15 +420,15 @@ Simplificando, fatoriais são: $n! = n dot (n - 1) dot ... dot 3 dot 2 dot 1$
   })
 ]
 
-lista de fatoriais
-$
-  &2! = 2 dot 1 = 2\
+=== lista de fatoriais
+
+$&2! = 2 dot 1 = 2\
   &3! = 3 dot 2! = 6\
   &4! = 4 dot 3! = 24\
   &5! = 5 dot 4! = 120\
   &6! = 6 dot 5! = 720\
   &7! = 7 dot 6! = 5040\
-  &8! = 8 dot 5! = 40320\
+  &8! = 8 dot 7! = 40320\
   &9! = 9 dot 8! = 362880\
   &10! = 10 dot 9! = 3628800\
 $
@@ -423,7 +436,7 @@ $
 = Geometria Plana
 
 == Triângulos
-\
+
 Figura plana formada por três vértices e três arestas cujo a soma dos ângulos internos se iguala a 180°.
 
 #ctz-canvas(length: 0.7cm, clip-canvas: (-2, -4, 8, 6), {
@@ -528,7 +541,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-  
+
   content((point.at(0) -2, point.at(1) + 8), anchor: "west", [
     Formula do Triângulo Equilátero\ \
     $A_\u{25B3} = (l^2 sqrt(3)) / 4$\ \
@@ -569,7 +582,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-  
+
   content((point.at(0) - 2, point.at(1) + 8), anchor: "west", [
     Formula (genérica) do Triângulo\ \
     $A_\u{25B3} = (b dot h) / 2$\ \
@@ -590,7 +603,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
 })
 
 == Circunferências
-\
+
 #lorem(20)
 
 #ctz-canvas(length: 0.7cm, clip-canvas: (-2, -6, 8, 6), {
@@ -612,7 +625,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-  
+
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Área do Circulo\ \
     $A_\u{25CB} = pi dot r^2$\ \
@@ -650,7 +663,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-  
+
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Perímetro do Circulo\ \
     $2P_\u{25CB} = 2 pi dot r$\ \
@@ -670,7 +683,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
 })
 
 == Funções Periódicas
-\
+
 Uma função $f: RR -> RR$ é periódica se $exists p in RR^*_+ \/ f(x) = f(x + p), forall_x "e" RR$\
 
 Ou seja, existe período positivo no qual imagem de x é igual a imagem de x + p, para todo x pertencente ao conjunto dos números reais. \
@@ -716,7 +729,6 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
 === Elementos da função cossenoide e senoide
 
 == Circunferência trigonométrica
-\
 
 #align(center)[
   #ctz-canvas(length: 0.7cm, clip-canvas: (-8, -8, 8, 8), {
@@ -911,7 +923,6 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
 ]
 
 === Transformações Trigonométricas
-\
 
 #align(left)[
   #ctz-canvas(length: 0.7cm, clip-canvas: (-8, -8, 8, 8), {
@@ -1048,6 +1059,18 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
       = bold(0.26)$
     ])
 
+    /*content((-8, -20),
+      anchor: "east",
+      [$
+        &sin 30 = sqrt(2) / 2\
+        &"AB" = 1\
+        &"AB"^2 = "BC"^2 + "AC"^2\
+        &1 = "BC"^2 + "AC"^2
+        /*&sin^2 x = 1 - cos^2 x\
+        &sin x =  sqrt(1 - cos^2 x)\*/
+      $]
+    )*/
+
     content((4, -18), [aproximação do google: 0.2588190451])
 
     content((6, -0.8), [$cos$])
@@ -1057,7 +1080,6 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
 
 === Fórmulas de transformações trigonométricas
 
-\
 1. $sin(alpha + beta) = sin alpha dot cos beta + sin beta dot cos alpha$
 \
 2. $sin(alpha - beta) = sin alpha dot cos beta - sin beta dot cos alpha$
@@ -1150,7 +1172,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
 = Geometria Espacial
 
 == Relação de Euler
-\
+
 #align(center)[
   #table(
     columns: (auto, auto, auto, auto),
@@ -1193,7 +1215,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
     )
 
     ctz-draw(
-      points: ("A", "B", "C", "D", "E", "F", "h"), 
+      points: ("A", "B", "C", "D", "E", "F", "h"),
       labels: (
         A: "below",
         B: "below",
@@ -1229,7 +1251,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
 ]
 
 == Pirâmides
-\
+
 Dado um plano $alpha$, um polígono convexo P, contido em $alpha$, e um ponto V não pertencente a $alpha$, denominamos como piramides a reunião de todos os seguimentos com uma extremidade em P e a outra em V.
 
 #align(center)[

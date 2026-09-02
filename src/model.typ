@@ -16,7 +16,7 @@
   show math.equation: set text(font: "IBM Plex Math" )
 
   align(center)[
-    #image("figures/Darya-logo.png", width: 25%)
+    #image(".figures/Darya-logo.png", width: 25%)
     #text(1em, weight: 300, "DISPONIBILIZADO POR DARYA ORG\n")
     #text(0.8em, weight: 300, title)
   ]

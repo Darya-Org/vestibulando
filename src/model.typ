@@ -11,12 +11,9 @@
   show: ef-document.with(
     watermark: context {
     if here().page() > 1 {
-        image(
-        	dither(
-          	read("figures/Darya-logo.nobg.png",
-           	encoding: none
-          ),
-          palette: (white, rgb("#f4f4f4")), 
+        image(dither(
+          read("figures/Darya-logo.nobg.png", encoding: none),
+          palette: (white, rgb("#f4f4f4")),
           edge-threshold: 0.2,
           brightness: -0.2,
         ))
@@ -40,7 +37,7 @@
   show math.equation: set text(font: "IBM Plex Math" )
 
   align(center)[
-    #image("figures/Darya-logo.png", width: 25%)
+    #image("./figures/Darya-logo.png", width: 25%)
     #text(1em, weight: 300, "DISPONIBILIZADO POR DARYA ORG\n")
     #text(0.8em, weight: 300, title)
   ]

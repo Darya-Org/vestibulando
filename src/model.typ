@@ -12,7 +12,7 @@
     watermark: context {
     if here().page() > 1 {
         image(dither(
-          read("figures/Darya-logo.nobg.png", encoding: none),
+          read("./.figures/Darya-logo.nobg.png", encoding: none),
           palette: (white, rgb("#f4f4f4")),
           edge-threshold: 0.2,
           brightness: -0.2,

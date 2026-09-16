@@ -7,7 +7,7 @@
 
 = Forças
 
-== Equilibrio
+== Equilíbrio
 
 == Momento de uma Força
 
@@ -18,10 +18,44 @@
 == Trabalho de uma Força
 
 $
-  bold(tau_accent(F, arrow) = F dot d dot cos theta) \
-  "ou"\
-  bold(tau_accent(F, arrow) = "Area")
+  bold(tau_accent(F, arrow) = F dot d dot cos theta)
 $
+
+=== Usando Gráfico
+
+$
+  bold(tau_accent(F, arrow)) = ((50 + 20)dot 45) / 2 = 1575
+$
+
+#align(center)[
+  #cetz.canvas(length: 1cm, {
+    import cetz.draw: *
+    import "@preview/cetz-plot:0.1.3": plot, chart
+
+    plot.plot(
+      size: (10, 6),
+      x-tick-step: 10,
+      y-tick-step: 15,
+      x-min: 0,
+      x-max: 50,
+      y-min: 0,
+      y-max: 45,
+      axis-style: "school-book",
+      x-label: [#h(2.5em)d (cm)],
+      y-label: $tau$,
+      {
+        plot.add(
+          domain: (0, 50),
+          samples: 100,
+          style: (stroke: blue + 1.5pt),
+          fill: true,
+          label: "Area",
+          x => if x < 30 { x } else { 30 },
+        )
+      }
+    )
+  })
+]
 
 === Força Peso
 
@@ -84,7 +118,7 @@ $
 $K = 9 dot 10^9$
 
 $
-  F = (K dot |Q_1| dot |Q_2|) / 2\
+  F = (K dot |Q| dot |q|) / d^2\
   "ou"\
   accent("F", arrow) = accent("E", arrow) dot |q|\
 $
@@ -105,7 +139,7 @@ $
 
 === Linhas de Força
 
-#align(center)[
+/*#align(center)[
   #ctz-canvas(length: 0.9cm, {
     import cetz.draw: *
 
@@ -127,10 +161,10 @@ $
     }
 
     // ---------- Linhas de campo dispersas (fuga lateral) ----------
-    for dy in (-0.35, 0, 0.35) {
+    /*for dy in (-0.35, 0, 0.35) {
       line((-1.8, dy * 1.3), (-3, dy * 3), stroke: black + 0.8pt)
       line((1.8, dy * 1.3), (3, dy * 3), stroke: black + 0.8pt)
-    }
+    }*/
 
     // ---------- Ímã: polo S (esquerda) e polo N (direita) ----------
     rect((-1.8, -1), (0, 1), stroke: blue + 1.4pt, fill: white)
@@ -139,7 +173,7 @@ $
     content((-0.9, 0), text(size: 1.1em)[S])
     content((0.9, 0), text(size: 1.1em)[N])
   })
-]
+]*/
 
 == Potencial Elétrico
 
@@ -155,21 +189,107 @@ $
 
 === Campo Elétrico Uniforme
 
-$
+1. $
   E dot d = u
-$
+$ #align(center)["éd-u"\ (usar "edu" pode confundir)]
 
 == Eletrodinâmica
 
-$
-  i = q / (Delta t)\
-  "ou"\
+1. $
+  Q = i dot Delta t
+$ #align(center)["Quit"]
+
+2. $
   i = (n dot e) / (Delta t)
 $
 
 === Consumo Elétrico e Potencia
 
-$
+1. $
   P = i dot u\
+$
+
+2. $
   E = P dot Delta t
+$
+
+$
+  
+$
+
+=== Lei de Ohm
+
+"O que é uma resistência elétrica?"
+
+Quanto maior a resistência, menor o efeito jaule e menor o calor emitido.
+
+#align(center)[
+  #cetz.canvas(length: 1cm, {
+    import cetz.draw: *
+    import "@preview/cetz-plot:0.1.3": plot, chart
+
+    plot.plot(
+      size: (10, 6),
+      x-tick-step: 1.75,
+      y-tick-step: 15,
+      x-min: 0,
+      x-max: 7,
+      y-min: 0,
+      y-max: 45,
+      axis-style: "school-book",
+      x-label: $x$,
+      y-label: $y$,
+      {
+        plot.add(
+          domain: (0, 8),
+          samples: 100,
+          style: (stroke: blue + 1.5pt),
+          fill: false,
+          label: "não ôhmico",
+          x => calc.pow(x, 2),
+        )
+        plot.add(
+          domain: (0, 8),
+          samples: 100,
+          style: (stroke: red + 1.5pt),
+          fill: false,
+          label: "ôhmico",
+          x => x * 7,
+        )
+      }
+    )
+  })
+]
+
+1. $
+  U = R dot i
+$
+
+2. $
+  P = R dot i^2
+$
+
+3. $
+  P = u^2 / R
+$ #align(center)[ronronado ("Purr") em inglês]
+
+=== "Segunda" Lei de Ohm
+
+1. $
+  R = (sigma dot l) / A
+$ #align(center)["rola"]
+
+=== Série e Paralelo
+
+= Conversão de Medidas
+
+$
+  "mm" = 10^(-3)"m"\
+  "mm"^2 = 10^(-6)"m"^2
+$
+
+= Outro
+
+$
+  "Req" = Sigma R
 $

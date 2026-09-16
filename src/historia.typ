@@ -1,11 +1,16 @@
-#import "model.typ": prova_model
-#import "@preview/ctz-euclide:0.1.5": *
+#import "model.typ": *
 
 #show: prova_model.with(
   title: [Resumo de História - E.M.],
 )
 
 = Imperialismo
+
+#timeline((
+  ("2024", [Start]),
+  ("2025", [Pilot]),
+  ("2026", [Launch])
+))
 
 == Conferência de Berlim
 

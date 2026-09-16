@@ -70,7 +70,7 @@ $
 
 === Exemplos
 
-#ctz-canvas({
+#ctz-canvas(length: 0.7cm, clip-canvas: (0, -10, 8, 0), {
   import cetz.draw: *
 
   ctz-init()
@@ -78,7 +78,7 @@ $
   let point = (0, 0)
 
   content(point, anchor: "west", [a)$
-    cancel(log_5)^(3x-5) = cancel(log_5)^7
+    cancel(log_5)^(3x-5) = cancel(log_5)^7 
     &=> 3x-5 = 7 \
     &= 3x = 12 \
     &= underline(x = 4)\
@@ -106,23 +106,61 @@ $
     &3x < 4\
     &x < 4 / 3\
   $])
-})\
+})
 
 == Progressões
 
 === Aritmética
 
-PA($A_1, A_2, A_3, A_4, A_5, dots, A_n$)
+Crescimento linear.
 
-Termo Geral:
+#align(center)[
+  #ctz-canvas(length: 0.7cm, clip-canvas: (-8, -1, 8, 5), {
+    import cetz.draw: *
 
-$A_n = A_1 + (n - 1)r$
+    ctz-init()
 
-Soma dos Termos:
-\
-$S = ((A_1 + A_n) dot n) / 2$
+    let point = (-7, 0)
+
+    ctz-def-points(
+      A: point,
+      B: (point.at(0), point.at(1) + 1),
+      C: (point.at(0) + 1, point.at(1) + 1),
+      D: (point.at(0) + 1, point.at(1)),
+
+      E: (point.at(0) + 2, point.at(1)),
+      F: (point.at(0) + 2, point.at(1) + 2),
+      G: (point.at(0) + 1, point.at(1) + 2),
+
+      H: (point.at(0) + 2, point.at(1) + 3),
+      I: (point.at(0) + 3 , point.at(1) + 3),
+      J: (point.at(0) + 3, point.at(1)),
+
+      K: (point.at(0) + 4, point.at(1) + 4),
+      L: (point.at(0) + 3, point.at(1) + 4),
+      M: (point.at(0) + 4, point.at(1)),
+    )
+
+    ctz-draw-polygon("A", "B", "C", "D")
+    ctz-draw-polygon("D", "E", "F", "G")
+    ctz-draw-polygon("F", "H", "I", "J", "E")
+    ctz-draw-polygon("J", "M", "K", "L")
+
+    content(((point.at(0) + 5.2), point.at(1) + 2), anchor: "west", [
+      PA($A_1, A_2, A_3, A_4, A_5, dots, A_n$)\ \
+      $A_n = A_1 + (n - 1)r$
+    ])
+  })
+]
+
+Soma dos Termos:\
+$
+  S = ((A_1 + A_n) dot n) / 2
+$
 
 === Geométrica
+
+Crescimento exponencial.
 
 #align(center)[
   #ctz-canvas(length: 0.7cm, clip-canvas: (-8, -1, 8, 6), {
@@ -162,17 +200,24 @@ $S = ((A_1 + A_n) dot n) / 2$
   })
 ]
 
-Soma dos Termos (finita):
+1. Soma dos Termos (finita):
 
-$S = (A_1 dot (q^n - 1)) / (q - 1)$
+$
+  S = (A_1 dot (q^n - 1)) / (q - 1)
+$
 
-Soma dos Termos (infinita) onde $0 < q < 1$:
+2. Soma dos Termos (infinita):\
+  ${q in #h(0.4em) RR: 0 < q < 1}$
 
-$lim S = A_1 / (1 - q)$
+$
+  lim S = A_1 / (1 - q)
+$
 
-Média Geométrica:
+3. Média Geométrica:
 
-$A_2 = sqrt(A_1 dot A_3)$
+$
+  A_2 = sqrt(A_1 dot A_3)
+$
 
 == Matrizes
 
@@ -182,17 +227,36 @@ $
 
 === Tipos
 
-linha $
+1. linha:\
+  A coluna tem tamanho de 1.$
   mat(A, B, C, D) -> M_(1x n)
 $
 
-coluna $
+2. coluna:\
+  A linha tem tamanho de 1.$
   mat(A; B; C; D) -> M_(n x 1)
 $
 
-nula $
+3. nula:\
+  Todos os termos são zero.$
   mat(0, 0, dots; 0, 0, dots; dots, dots, dots.down)
 $
+
+=== Propriedades
+
+1.
+
+2.
+
+3.
+
+4. Quando trocamos uma 'fita' com outra paralela a ela, teremos:
+
+$
+  det M' = - det M
+$
+
+5. Teorema de Binet
 
 === Soma
 
@@ -240,7 +304,58 @@ O determinante será a soma dos elementos de uma linha ou coluna (escolhida) pel
 
 === Regra de Chió
 
+1. Exemplo simples
+$
+  &lr(mat(delim: "|",
+    4, 0, 0, #text(red)[0],;
+    1, 0, 1, #text(red)[1],;
+    -6, 6, 1, #text(red)[3],;
+    #text(red)[2], #text(red)[0], #text(red)[-1], #text(purple)[1];
+  ))
+  =
+  mat(delim: "|",
+    4 - 2 dot 0, 0 - 0 dot 0, 0 - (-1) dot 0;
+    1 - 2 dot 1, 0 - 0 dot 1, 1 - (-1) dot 1;
+    -6 - 2 dot 3, 6 - 0 dot 3, 1 - (-1) dot 3;
+  )
+  =
+  mat(delim: "|",
+    4, 0, 0;
+    -1, 0, 2;
+    12, 6, 4;
+  )
+$
+
+2. Usando propriedade de troca de colunas das matrizes
+$
+  &lr(mat(delim: "|",
+    3, 1, 2, 2;
+    0, 2, 0, 4;
+    -1, 4, 1, 2;
+    0, 1, 3, 3;
+  ) =
+  - lr(mat(delim: "|",
+    #text(purple)[1], #text(red)[3], #text(red)[2], #text(red)[2],;
+    #text(red)[2], 0, 0, 4;
+    #text(red)[4], -1, 1, 2;
+    #text(red)[1], 0, 3, 3;
+  ))) =
+  - mat(delim: "|",
+    0 - 3 dot 2, 0 - 2 dot 2, 4 - 2 dot 2;
+    -1 - 3 dot 4, 1 - 2 dot 4, 2 - 2 dot 4;
+    0 - 3 dot 1, 3 - 2 dot 1, 3 - 2 dot 1;
+  ) =\
+  &=
+  mat(delim: "|",
+    -6, -4, 0;
+    -13, -7, -6;
+    -3, 1, 1
+  ) =
+  - (-30 - 88) = 118
+$
+
 == Sistemas Lineares
+
 Um sistema linear é composto por equações lineares e o conjunto solução é um par ordenado (x, y), uma terna ordenada (x, y, z) e assim por diante. Uma equação é linear quando possuí duas ou mais incógnitas.
 
 === Adição
@@ -275,6 +390,8 @@ Um sistema linear é composto por equações lineares e o conjunto solução é 
 
 O escalonamento de um sistema linear é um método para resolver sistemas que consiste em eliminar incógnitas para formar uma "escada". Esse método é nais indicado para resolver sistemas de ordem igual ou maior que 3.
 
+1. Exemplo simples
+
 #align(center)[
   #ctz-canvas(length: 0.7cm, clip-canvas: (-1, -2, 8, 2), {
     import cetz.draw: *
@@ -307,13 +424,13 @@ O escalonamento de um sistema linear é um método para resolver sistemas que co
 
     content((point.at(0), point.at(1) - 3), anchor: "west", [$
       -5y = -13 \
-      y = 2,6
+      y = 2.6
     $])
-
+    
     content((point.at(0) + 12, point.at(1) - 3.4), anchor: "west", [$
-      & x + 4 dot 2,6 + 2 dot 3 = 24 \
-      & x + 10,4 + 6 = 24 \
-      & x = 7,6
+      & x + 4 dot 2.6 + 2 dot 3 = 24 \
+      & x + 10.4 + 6 = 24 \
+      & x = 7.6
     $])
 
     content((point.at(0) + 5, point.at(1) - 3.4), anchor: "west", [$
@@ -322,17 +439,50 @@ O escalonamento de um sistema linear é um método para resolver sistemas que co
       & z = 3
     $])
 
-    content((point.at(0), point.at(1) - 7), anchor: "west", [$
-      S = {(7,6; 2,6; 3)}
+    content((point.at(0), point.at(1) - 6.5), anchor: "west", [$
+      S = {(7.6; 2.6; 3)}
     $])
   })
 ]
+
+=== Tipos de Soluções
+
+1. SPD: Sistema Possível Determinado:\
+  As retas se encontram em um ponto (x, y) em que $S = {(x, y)}$
+
+2. SPI: Sistema Possível Indeterminado:\
+  As retas são sobrepostas
+
+3. SI: Sistema Indeterminado
+  As retas são paralelas e $S = emptyset$
 
 === Cramer
 
 O teorema de Cramer é um método de resolver sistemas através de determinantes. Esse método pode ser usado em sistemas de qualquer ordem (2x2, 3x3, 4x4 etc).
 
 === Discussão de Sistemas Lineares
+
+Dado um sistema linear composto por incógnitas e parâmetros (letras diferentes das incógnitas), discuti-lo significa determinar possíveis valores dos parâmetros para que o sistema seja SPD, SPI ou SI.
+
+Para isso, é necessário montar o determinante dos coeficientes das incógnitas ($D$) em que, se $D != 0$, o sistema é SPD e se D = 0, o sistema pode ser e/ou SPI ou SI.
+
+1. Exemplo simples
+
+$
+  &cases(
+    #text(blue)[K] x + 3y = 2,
+    2x - y = 0
+  )
+  #h(2em)
+  D = mat(delim: "|",
+    #text(blue)[K], 3;
+    2, -1;
+  ) = - K - 6\
+  #v(3em)
+  &"se" - K - 6 != 0":"\
+  & - K != 6\
+  & K != -6 "(SPD)"
+$
 
 = Análise Combinatória e Estatística
 
@@ -369,6 +519,8 @@ Imagine que *você* quer comprar um carro e está em duvida entre duas marcas di
 )]
 
 == Variância
+
+Definido por Var($x$) ou $sigma^2$
 
 $
   "Var"(x) &= (sum_(i=1)^n (x_i - #overline[x])^2) / n\
@@ -541,7 +693,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-
+  
   content((point.at(0) -2, point.at(1) + 8), anchor: "west", [
     Formula do Triângulo Equilátero\ \
     $A_\u{25B3} = (l^2 sqrt(3)) / 4$\ \
@@ -582,7 +734,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         C: "above",
       ),
   )
-
+  
   content((point.at(0) - 2, point.at(1) + 8), anchor: "west", [
     Formula (genérica) do Triângulo\ \
     $A_\u{25B3} = (b dot h) / 2$\ \
@@ -625,7 +777,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-
+  
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Área do Circulo\ \
     $A_\u{25CB} = pi dot r^2$\ \
@@ -644,13 +796,12 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
   $])
 })
 
-#ctz-canvas(length: 0.7cm, clip-canvas: (-2, -6, 8, 6), {
+#ctz-canvas(length: 0.7cm, clip-canvas: (-2, -5, 8, 6), {
   import cetz.draw: *
 
   ctz-init()
 
   let point = (0, 0)
-
   ctz-def-points(
     O: point,
     B: (point.at(0) + 3, point.at(1)),
@@ -663,7 +814,7 @@ Figura plana formada por três vértices e três arestas cujo a soma dos ângulo
         O: "below left",
       ),
   )
-
+  
   content((point.at(0) - 10, point.at(1) + 2), anchor: "west", [
     Perímetro do Circulo\ \
     $2P_\u{25CB} = 2 pi dot r$\ \
@@ -1062,16 +1213,12 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
     /*content((-8, -20),
       anchor: "east",
       [$
-        &sin 30 = sqrt(2) / 2\
-        &"AB" = 1\
-        &"AB"^2 = "BC"^2 + "AC"^2\
-        &1 = "BC"^2 + "AC"^2
-        /*&sin^2 x = 1 - cos^2 x\
-        &sin x =  sqrt(1 - cos^2 x)\*/
+        &sin^2 x = 1 - cos^2 x\
+        &2sin^2 x =  2 - 2 cos^2 x
       $]
     )*/
 
-    content((4, -18), [aproximação do google: 0.2588190451])
+    content((4, -18), [aproximação do Google: 0.2588190451])
 
     content((6, -0.8), [$cos$])
     content((-1, 6), [$sin$])
@@ -1215,7 +1362,7 @@ Por exemplo: $bold(cos pi / 6 = cos (13 pi) / 6)$, $cos (pi / 6 + p)$ sendo $p =
     )
 
     ctz-draw(
-      points: ("A", "B", "C", "D", "E", "F", "h"),
+      points: ("A", "B", "C", "D", "E", "F", "h"), 
       labels: (
         A: "below",
         B: "below",
@@ -1325,11 +1472,10 @@ Dado um plano $alpha$, um polígono convexo P, contido em $alpha$, e um ponto V 
       I: (point.at(0) - 1, point.at(1) + 1)
     )
 
-    ctz-draw-line("G", "O", "V", stroke: (paint: red, dash: "dotted"))
-    ctz-draw-line("V", "G", stroke: (paint: red))
+    ctz-draw-line("V", "C", "B", stroke: (dash: "dotted"))
+    ctz-draw-polygon("G", "O", "V", stroke: (paint: red, dash: "dotted"))
     ctz-draw-line("A", "C", stroke: (dash: "dotted"), name: "l")
-    ctz-draw-line("B", "V")
-    ctz-draw-line("A", "V", "C", "B", "A")
+    ctz-draw-polygon("V", "B", "A")
     ctz-draw-line("H", "I", stroke: (paint: red), name: "h")
 
     ctz-draw(

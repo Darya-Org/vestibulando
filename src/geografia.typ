@@ -1,12 +1,18 @@
-#import "model.typ": prova_model
-#import "@preview/ctz-euclide:0.1.5": *
-#import "@preview/mercator:0.1.2": *
+#import "model.typ": *
 
 #show: prova_model.with(
   title: [Resumo de Geografia - E.M.],
 )
 
 = Geografia Física
+
+= Geologia
+
+== Dobramentos Modernos
+
+== Escudos Cristalinos
+
+== Bacias Sedimentares
 
 = Cartografia
 
@@ -19,6 +25,8 @@ Representam linhas imaginárias para abstrair as posições dos elementos geogr�
 == Superfícies de Projeção
 
 == Projeções Cartográficas
+
+== Trópicos
 
 == Escala
 
@@ -145,7 +153,7 @@ Países em bônus demográfico tem a população economicamente ativa (PEA) maio
 
 == Fluxos Migratórios no Brasil
 
-#let mapa = read(".figures/brasil.json", encoding: none)
+#let mapa = read("data/brasil.json", encoding: none)
 
 #let config = json.encode((
   graticule: (step: 15),

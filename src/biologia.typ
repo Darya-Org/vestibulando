@@ -75,6 +75,7 @@ Um vírus, ao infectar uma célula
 
 == Seres Eucarióticos
 
+// AI assistance was used to build this image
 #align(center)[
   #ctz-canvas(length: 1cm, clip-canvas: (-8, -1, 8, 6), {
     import cetz.draw: *
@@ -182,75 +183,6 @@ Crescimento descontrolado pode ser provocado pelo aumento da temperatura oceâni
 - Maré-vermelha (algas vermelhas)
 
 = Reino Animália: Metazoa
-
-/*#align(center)[
-  #ctz-canvas(length: 0.7cm, clip-canvas: (-1, -2, 8, 2), {
-    import "@preview/cetz:0.5.2": tree
-    import cetz.draw: *
-
-    ctz-init()
-
-    set-style(content: (frame: "rect", fill: white, padding: 4pt))
-  
-    line(name: "1", (0, 0), (3, 0))
-    content("1.start", [Reino\ Animal])
-    content("1.mid", anchor: "west", [1])
-  
-    line((3, 3), (3, -3))
-    line(name: "6", (3, 3), (15, 3))
-    content("6.mid", [6])
-    content("6.end", [Poríferos])
-  
-    line(name: "2", (3, -3), (5, -3))
-    line((5, 1), (5, -7))
-    content("2.mid", [2])
-  
-    line(name: "7", (5, 1), (15, 1))
-    content("7.mid", [7])
-    content("7.end", [Cnidários])
-  
-    line(name: "3", (5, -7), (7, -7))
-    content("3.mid", [3])
-    line((7, -4), (7, -12))
-  
-    line(name: "5", (7, -12), (11, -12))
-    content("5.mid", [5])
-  
-    line((11, -14), (11, -10))
-    line(name: "14", (11, -14), (15, -14))
-    content("14.end", [Cordados])
-    line(name: "13", (11, -10), (15, -10))
-    content("13.end", [Equinodérmios])
-    //0km content("13.mid", (rel: (-1, 0.3)), [13])
-    content("14.mid", anchor: "east", [14])
-  
-    line(name: "4", (7, -4), (9, -4))
-    content("4.mid", [4])
-    line((9, -7), (9, -1.5))
-    line((9, -1.5), (11, -1.5))
-  
-    line((11, -1), (11, -4))
-    line(name: "8", (11, -1), (15, -1))
-    line(name: "9", (11, -2.5), (15, -2.5))
-    line(name: "10", (11, -4), (15, -4))
-    content("8.end", [Platelmintos])
-    content("8.mid", anchor: "east", [8])
-    content("9.end", [Moluscos])
-    content("9.mid", anchor: "east", [9])
-    content("10.end", [Anelídeos])
-    content("10.mid", anchor: "east", [10])
-  
-    line(name: "11", (9, -7), (11, -7))
-    line((11, -6), (11, -8))
-    line(name: "13", (11, -8), (15, -8))
-    line(name: "12", (11, -6), (15, -6))
-    content("11.mid", [11])
-    content("13.end", [Artrópodes])
-    content("13.mid", anchor: "east", [13])
-    content("12.end", [Nematódeos])
-    content("12.mid", anchor: "east", [12])
-  })
-]*/
 
 #let animalia = parse-newick(
   "
@@ -424,7 +356,6 @@ Grupo mais diverso do planeta.
           fill: true,
           style: (stroke: green + 1.5pt, fill: green.lighten(60%)),
           x => {
-            //let period = if (x < end) {calc.floor(x / 3)} else {end}
             if x < 3 {
               // curve
               calc.log(x, base: 6) - 0.1
@@ -446,26 +377,6 @@ Grupo mais diverso do planeta.
             }
           }
         )
-
-        /*plot.add(
-          domain: (1, 10),
-          samples: 100,
-          label: [Artrópodes],
-          fill: true,
-          style: (stroke: red + 1.5pt),
-          x => {
-            let p = 3;
-            let b = 100;
-            let period = if (x < end) {calc.floor(x / p)} else {end}
-
-            let rem = calc.rem(x, p)
-            if rem <= 1 and rem != 1 or x >= 8 {
-              calc.log(x, base: b) + calc.log(calc.max(period, x), base: b)
-            } else {
-              calc.log(calc.max(period, x), base: b)
-            }
-          }
-        )*/
 
         plot.add-vline(
           end,
@@ -543,6 +454,7 @@ Grupo mais diverso do planeta.
 - Ácido Nucleotídico (DNA ou RNA) circundado por camada formada por proteínas, capsídeo;
 - Alguns possuem envelope membranoso e enzimas no interior do capsídeo.
 
+// AI assistance was used to build this image
 #align(center)[
   #ctz-canvas(length: 1cm, {
     import cetz.draw: *
@@ -552,14 +464,14 @@ Grupo mais diverso do planeta.
     let r-env = 4       // raio do envelope lipídico
     let r-caps = 2.6    // raio do capsídeo
 
-    // Envelope lipídico (bicamada) - dois círculos próximos
+    // Envelope lipídico (bicamada, dois círculos próximos)
     circle((0, 0), radius: r-env, stroke: rgb(255, 190, 110) + 1pt, fill: rgb(255, 235, 200))
     circle((0, 0), radius: r-env - 0.3, stroke: rgb(255, 190, 110) + 1pt)
 
     // Capsídeo (proteico)
     circle((0, 0), radius: r-caps, stroke: rgb(120, 170, 220) + 1.2pt, fill: rgb(210, 230, 250))
 
-    // Capsômeros - subunidades proteicas ao redor do capsídeo
+    // Capsômeros (subunidades proteicas ao redor do capsídeo)
     let n-caps = 10
     for i in range(n-caps) {
       let ang = i * 360deg / n-caps
@@ -568,7 +480,7 @@ Grupo mais diverso do planeta.
       circle((cx, cy), radius: 0.35, stroke: rgb(120, 170, 220), fill: rgb(230, 240, 255))
     }
 
-    // DNA - fita em espiral dentro do capsídeo
+    // DNA (fita em espiral dentro do capsídeo)
     let dna-pts = ()
     let n-dna = 50
     for i in range(n-dna + 1) {
@@ -579,7 +491,7 @@ Grupo mais diverso do planeta.
     }
     line(..dna-pts, stroke: rgb(80, 150, 80) + 1.5pt)
 
-    // Receptores (glicoproteínas) - espículas saindo do envelope
+    // Receptores (glicoproteínas, espículas saindo do envelope)
     let n-rec = 14
     for i in range(n-rec) {
       let ang = i * 360deg / n-rec

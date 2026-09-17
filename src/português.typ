@@ -16,30 +16,30 @@ Era um Jesuíta. Explorava o conceptismo, ou seja, construção de lógica, na s
 
 === Estrutura do Sermão
 
-- Introito ou Exórdio: Introdução do texto e apresentaçãao do tema.\
+- Introito ou Exórdio: Introdução do texto e apresentação do tema.\
   $arrow.r$ Pede inspiração a um santo, similarmente a como Camões pedia inspiração as 9 musas.
 - Argumentos: Desenvolve argumentos para defender o seu ponto de vista e criticas.\
-  $arrow.r$ Usa trechos biblicos como justificativa para a base do seu argumento.
+  $arrow.r$ Usa trechos bíblicos como justificativa para a base do seu argumento.
 - Peroração: Conclusão, parte final e fechamento do discurso.\
   $arrow.r$ Reforça a mensagem principal.
 
 
 == Arcadismo
 
-Idade Classica: Sociedade Greco-Romana (homero)\
+Idade Clássica: Sociedade Greco-Romana (Homero)\
 Idade média: Trovadorismo (D. Dinis)\
 Transição: Humanismo (Gil Vicente)\
 Renascimento: Classicismo (Camões)\
 Transição: Maneirismo (Camões)\
-Periodo Colonial: Barroco (Gregório de Matos)\
-Neoclassicismo - Iluninismo: Arcadismo\
+Período Colonial: Barroco (Gregório de Matos)\
+Neoclassicismo - Iluminismo: Arcadismo\
 
 === Figuras de linguagem e Sintaxe Importantes
 
-L - Antítese: Palavras de sentidos contrario ("Amor e Odio")\
+L - Antítese: Palavras de sentidos contrario ("Amor e Ódio")\
 L - Paradoxo: Ideias opostas ("ferida que doí, mas não se sente")\
 S - Hipérbato: Troca na ordem das palavras. Troca das palavras na ordem.\
-S - Quiasmo: Disposição crusada em diferentes versos de um poema\
+S - Quiasmo: Disposição cruzada em diferentes versos de um poema\
 S - Silogismo: Argumentação lógica no poema "Já que... E que... Logo..."
 
 === Analise dos Poemas (em geral, Gregório de Matos)

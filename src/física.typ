@@ -1,5 +1,5 @@
-#import "model.typ": prova_model
-#import "@preview/ctz-euclide:0.1.5": *
+#import "model.typ": *
+#import "@preview/typed-physics:0.1.1": electricity as e
 
 #show: prova_model.with(
   title: [Resumo de Física - E.M.],
@@ -139,42 +139,6 @@ $
 
 === Linhas de Força
 
-/*#align(center)[
-  #ctz-canvas(length: 0.9cm, {
-    import cetz.draw: *
-
-    ctz-init()
-
-    // ---------- Linhas de campo (elipses concêntricas, N -> S por fora) ----------
-    let loops = ((3, 2.2), (4, 3.2), (5, 4.2))
-
-    for (rx, ry) in loops {
-      circle((0, 0), radius: (rx, ry), stroke: black + 1pt, fill: none)
-    }
-
-    // ---------- Setas indicando o sentido do campo (N -> S) ----------
-    for (rx, ry) in loops {
-      // topo: sentido N (direita) -> S (esquerda)
-      line((rx * 0.35, ry * 0.97), (-rx * 0.35, ry * 0.97), stroke: red + 1.2pt, mark: (end: ">"))
-      // base: sentido S (esquerda) -> N (direita), fechando o loop
-      line((-rx * 0.35, -ry * 0.97), (rx * 0.35, -ry * 0.97), stroke: red + 1.2pt, mark: (end: ">"))
-    }
-
-    // ---------- Linhas de campo dispersas (fuga lateral) ----------
-    /*for dy in (-0.35, 0, 0.35) {
-      line((-1.8, dy * 1.3), (-3, dy * 3), stroke: black + 0.8pt)
-      line((1.8, dy * 1.3), (3, dy * 3), stroke: black + 0.8pt)
-    }*/
-
-    // ---------- Ímã: polo S (esquerda) e polo N (direita) ----------
-    rect((-1.8, -1), (0, 1), stroke: blue + 1.4pt, fill: white)
-    rect((0, -1), (1.8, 1), stroke: red + 1.4pt, fill: white)
-
-    content((-0.9, 0), text(size: 1.1em)[S])
-    content((0.9, 0), text(size: 1.1em)[N])
-  })
-]*/
-
 == Potencial Elétrico
 
 $
@@ -290,6 +254,34 @@ $
 
 = Outro
 
+Associação em Série
 $
   "Req" = Sigma R
 $
+
+Associação em Paralelo
+$
+  1/"Req" = sum_(k=1)^n 1 / R_k
+$
+
+Associação em Paralelo, dois elementos
+$
+  "Req" = (R_1 dot R_2) / (R_1 + R_2)
+$
+
+#let circuit = e.dc-circuit(
+  style: (
+    scale: 1.6,
+    parallel-gap: 2,
+    minimum-loop-width: 10,
+  ),
+  e.voltage-source("V", voltage: 18),
+    e.parallel(
+      e.resistor("R300", resistance: 300, route: "under"),
+      e.resistor("R250", resistance: 250, route: "over"),
+  ),
+)
+
+//Assertion failed: typed-physics: unknown electricity diagram style key "compoent"; accepted keys are wire-stroke, component-stroke, component-fill, source-fill, junction-fill, resistor-symbol, voltage-source-symbol, component-length, resistor-length, resistor-height, capacitor-plate-gap, capacitor-plate-height, source-radius, source-plate-gap, source-long-plate, source-short-plate, parallel-gap, branch-lead, label-offset, source-clearance, apex-rise, frame-rise, minimum-loop-width, label-text, show-junctions, scale
+
+#align(center)[#e.diagram(circuit, labels: "value")]

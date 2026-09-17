@@ -1,4 +1,4 @@
-#import "model.typ": prova_model, cetz
+#import "model.typ": *
 
 #show: prova_model.with(
   title: [Resumo de Redação - E.M.],

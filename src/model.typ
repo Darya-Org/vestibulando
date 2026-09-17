@@ -15,7 +15,7 @@
     if here().page() > 1 {
         image(dither(
           read("./.figures/Darya-logo.nobg.png", encoding: none),
-          palette: (white, rgb("#f4f4f4")), 
+          palette: (white, rgb("#f4f4f4")),
           edge-threshold: 0.2,
           brightness: -0.2,
         ))
@@ -54,14 +54,14 @@
   body
   pagebreak()
 
+  // not a hack anymore!
   align(center)[#text(size: 2em)[Atribuição]]
-  // Again, this is a hack (I hate good code)
   grid(
-    columns: (1fr, 2fr),
-    gutter: 0fr,
+    columns: (8em, 20em),
+    gutter: 1em,
     rows: (auto),
-    rect(width: 20em, height: 20em, stroke: none)[IMAGEM AQUI],
-    rect(width: 100%, stroke: none)[
+    image(".figures/sclorentz.jpeg"),
+    rect(width: auto, stroke: none)[
       #strong[Felipe S.C. Lorentz]\
       Aluno Colégio Dante Alighieri\
       ---\
